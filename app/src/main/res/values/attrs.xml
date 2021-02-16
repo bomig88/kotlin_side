@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BindData">
+        <attr name="imgUrl" format="string"/>
+    </declare-styleable>
+
+    <attr name="ftv_fontStyle">
+        <enum name="regular" value="0"/>
+        <enum name="medium" value="1"/>
+        <enum name="bold" value="2"/>
+        <enum name="thin" value="3"/>
+        <enum name="light" value="4"/>
+    </attr>
+    <declare-styleable name="FontTextView">
+        <attr name="ftv_fontStyle"/>
+    </declare-styleable>
+
+    <declare-styleable name="UnderLineTextView" >
+        <attr name="underlineWidth" format="dimension" />
+        <attr name="underlineColor" format="color" />
+        <attr name="underlineEnable" format="boolean"/>
+    </declare-styleable>
+
+</resources>

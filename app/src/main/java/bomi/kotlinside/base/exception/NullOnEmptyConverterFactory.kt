@@ -1,4 +1,4 @@
-package bomi.kotlinside.exception
+package bomi.kotlinside.base.exception
 
 import okhttp3.ResponseBody
 import retrofit2.Converter

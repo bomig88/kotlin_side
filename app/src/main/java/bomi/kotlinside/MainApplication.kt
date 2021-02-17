@@ -1,7 +1,7 @@
 package bomi.kotlinside
 
 import android.app.Application
-import bomi.kotlinside.di.mainModule
+import bomi.kotlinside.base.di.mainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

@@ -1,4 +1,4 @@
-package bomi.kotlinside.di
+package bomi.kotlinside.base.di
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -8,15 +8,16 @@ import androidx.annotation.Keep
 import bomi.kotlinside.BuildConfig
 import bomi.kotlinside.MainApplication
 import bomi.kotlinside.R
-import bomi.kotlinside.api.ApiDataModel
-import bomi.kotlinside.api.ApiDataModelImpl
-import bomi.kotlinside.api.ApiService
-import bomi.kotlinside.exception.NoConnectivityException
-import bomi.kotlinside.exception.NullOnEmptyConverterFactory
+import bomi.kotlinside.base.api.ApiDataModel
+import bomi.kotlinside.base.api.ApiDataModelImpl
+import bomi.kotlinside.base.api.ApiService
+import bomi.kotlinside.base.exception.NoConnectivityException
+import bomi.kotlinside.base.exception.NullOnEmptyConverterFactory
 import bomi.kotlinside.ui.MainViewModel
 import bomi.kotlinside.ui.home.HomeTutorialViewModel
 import bomi.kotlinside.ui.home.HomeViewModel
 import bomi.kotlinside.ui.home.PopupViewModel
+import bomi.kotlinside.ui.intro.IntroViewModel
 import bomi.kotlinside.util.PreferenceUtil
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
@@ -135,6 +136,12 @@ var vmMainPart = module {
     }
 }
 
+var vmIntroPart = module {
+    viewModel {
+        IntroViewModel(get())
+    }
+}
+
 var vmHomeTutorialPart = module {
     viewModel {
         HomeTutorialViewModel()
@@ -160,6 +167,7 @@ var mainModule = listOf(
     modelMainPart,
 
     vmMainPart,
+    vmIntroPart,
     vmHomeTutorialPart,
     vmHomePart,
     vmPopupPart

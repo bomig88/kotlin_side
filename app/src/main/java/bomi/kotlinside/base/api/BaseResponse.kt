@@ -1,4 +1,4 @@
-package bomi.kotlinside.api.res
+package bomi.kotlinside.base.api
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

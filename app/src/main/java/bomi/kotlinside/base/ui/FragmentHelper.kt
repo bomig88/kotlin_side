@@ -1,4 +1,4 @@
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import bomi.kotlinside.ui.home.HomeTutorialFragment
 import bomi.kotlinside.ui.home.PopupFragment
 import java.util.*
 
-class FragmentHelper(private val mActivity: BaseActivity<*,*>) {
+class FragmentHelper(private val mActivity: BaseActivity<*, *>) {
     //---- Fragment Animation ----
     enum class AnimFragmentTransaction {
         NONE
@@ -24,7 +24,7 @@ class FragmentHelper(private val mActivity: BaseActivity<*,*>) {
     /**
      * 프레그먼트 스택
      */
-    private val mMapStack = ArrayList<BaseFragment<*,*>>()
+    private val mMapStack = ArrayList<BaseFragment<*, *>>()
 
     /**
      * add 형태의 자식 플래그먼트의 전환 애니메이션이 종료된 후 뒷배경 뷰 제거
@@ -33,7 +33,7 @@ class FragmentHelper(private val mActivity: BaseActivity<*,*>) {
         return mMapStack.size
     }
 
-    fun getLastStackFragment(): BaseFragment<*,*>? {
+    fun getLastStackFragment(): BaseFragment<*, *>? {
         return if (getBackStackSize() > 0) mMapStack[mMapStack.size - 1] else null
     }
 
@@ -44,13 +44,13 @@ class FragmentHelper(private val mActivity: BaseActivity<*,*>) {
      *
      * @param f : 전환할 프레그먼트
      */
-    fun addSingleton(f: BaseFragment<*,*>, clearAllHistory:Boolean = false) {
+    fun addSingleton(f: BaseFragment<*, *>, clearAllHistory:Boolean = false) {
         val mgrFragment =
             mActivity.supportFragmentManager
         val beginTransaction =
             mgrFragment.beginTransaction()
         val fClass: Class<*> = f::class.java
-        val arrRemover: ArrayList<BaseFragment<*,*>> = ArrayList()
+        val arrRemover: ArrayList<BaseFragment<*, *>> = ArrayList()
         var isFromBackStack = false
         if(clearAllHistory) {
             arrRemover.addAll(mMapStack)
@@ -84,7 +84,7 @@ class FragmentHelper(private val mActivity: BaseActivity<*,*>) {
             mgrFragment.beginTransaction()
 
         if (mMapStack.size > 1) {
-            val arrRemover: ArrayList<BaseFragment<*,*>> = ArrayList()
+            val arrRemover: ArrayList<BaseFragment<*, *>> = ArrayList()
             for (f in mMapStack) {
                 val compareFragmentClass: Class<*> = if (mActivity.getFlagHaveSaveReport())
                     HomeFragment::class.java
@@ -105,7 +105,7 @@ class FragmentHelper(private val mActivity: BaseActivity<*,*>) {
         //mgrFragment.executePendingTransactions()
     }
 
-    fun add(f: BaseFragment<*,*>, requestId: Int) {
+    fun add(f: BaseFragment<*, *>, requestId: Int) {
         val mgrFragment =
             mActivity.supportFragmentManager
         if (requestId != BaseFragment.REQUEST_EMPTY) {
@@ -132,7 +132,7 @@ class FragmentHelper(private val mActivity: BaseActivity<*,*>) {
             mActivity.supportFragmentManager
         if (mMapStack.size > 0) {
             val lastPos = mMapStack.size - 1
-            val popFragment: BaseFragment<*,*> = mMapStack[lastPos]
+            val popFragment: BaseFragment<*, *> = mMapStack[lastPos]
             val requestCode: Int = popFragment.getRequestCode()
             val resultCode: Int = popFragment.getResultCode()
             val bundleData: Bundle? = popFragment.getBundleResult()
@@ -168,7 +168,7 @@ class FragmentHelper(private val mActivity: BaseActivity<*,*>) {
                         }
                         mMapStack.trimToSize()
 
-                        val redrawFragment: BaseFragment<*,*> = mMapStack[redrawPos]
+                        val redrawFragment: BaseFragment<*, *> = mMapStack[redrawPos]
 
                         if (popFragment.isFragmentAddType()) {
                             beginTransaction.remove(popFragment)

@@ -1,9 +1,8 @@
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import bomi.kotlinside.api.ApiDataModel
-import com.google.gson.JsonObject
+import bomi.kotlinside.base.api.ApiDataModel
 
 open class BaseApiViewModel(private val apiModule : ApiDataModel) : BaseViewModel() {
     private val _btnEnabled = MutableLiveData(false)
@@ -12,19 +11,22 @@ open class BaseApiViewModel(private val apiModule : ApiDataModel) : BaseViewMode
         _btnEnabled.value = enabled
     }
 
-    private val _clickNext = SingleLiveEvent<Any>()
+    private val _clickNext =
+        SingleLiveEvent<Any>()
     val clickNext : LiveData<Any> = _clickNext
     fun clickNext() {
         _clickNext.call()
     }
 
-    private val _clickBack = SingleLiveEvent<Any>()
+    private val _clickBack =
+        SingleLiveEvent<Any>()
     val clickBack : LiveData<Any> = _clickBack
     fun clickBack() {
         _clickBack.call()
     }
 
-    private val _clickExit = SingleLiveEvent<Any>()
+    private val _clickExit =
+        SingleLiveEvent<Any>()
     val clickExit : LiveData<Any> = _clickExit
     fun clickExit() {
         _clickExit.call()

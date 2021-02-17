@@ -4,9 +4,9 @@ import android.content.DialogInterface
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import bomi.kotlinside.R
-import bomi.kotlinside.api.ApiDataModel
+import bomi.kotlinside.base.api.ApiDataModel
 import bomi.kotlinside.api.res.ResPopupVO
-import bomi.kotlinside.ui.base.BaseViewModel
+import bomi.kotlinside.base.ui.viewmodel.BaseViewModel
 
 class IntroViewModel(private val apiModule : ApiDataModel) : BaseViewModel() {
 

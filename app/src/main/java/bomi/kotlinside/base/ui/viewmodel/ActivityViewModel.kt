@@ -1,4 +1,4 @@
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui.viewmodel
 
 import bomi.kotlinside.api.res.ResPopupVO
 import bomi.kotlinside.util.PreferenceUtil

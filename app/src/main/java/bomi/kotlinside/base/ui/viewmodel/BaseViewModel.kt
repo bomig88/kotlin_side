@@ -1,12 +1,12 @@
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui.viewmodel
 
 import android.content.DialogInterface
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import bomi.kotlinside.R
-import bomi.kotlinside.exception.NoConnectivityException
-import bomi.kotlinside.ui.dialog.DAlertParam
+import bomi.kotlinside.base.exception.NoConnectivityException
+import bomi.kotlinside.base.ui.dialog.DAlertParam
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -18,18 +18,23 @@ open class BaseViewModel : ViewModel() {
     // 일회성 이벤트를 만들어 내는 라이브 이벤트
     // 뷰는 이러한 이벤트를 바인딩하고 있다가, 적절한 상황이 되면 액티비티를 호출하거나 스낵바를 만듬
     val toastMessage = ToastMessage()
-    val toastMessageString = ToastMessageString()
+    val toastMessageString =
+        ToastMessageString()
 
-    val dialogAlertMessage = DialogAlertMessage()
-    val dialogAlertMessageString = DialogAlertMessageString()
+    val dialogAlertMessage =
+        DialogAlertMessage()
+    val dialogAlertMessageString =
+        DialogAlertMessageString()
 
     val loadingChange = LoadingChange()
     val loadingClear = LoadingClear()
 
-    protected val _quitApp = SingleLiveEvent<Any>()
+    protected val _quitApp =
+        SingleLiveEvent<Any>()
     val quitApp: LiveData<Any> get() = _quitApp
 
-    private val _callNetworkSetting = SingleLiveEvent<Any>()
+    private val _callNetworkSetting =
+        SingleLiveEvent<Any>()
     val callNetworkSetting: LiveData<Any> get() = _callNetworkSetting
 
     /**

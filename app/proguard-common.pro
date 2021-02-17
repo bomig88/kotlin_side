@@ -18,22 +18,22 @@
 -keep class androidx.core.app.* { *; }
 -keep interface androidx.core.app.* { *; }
 
--keep public class emforce.goodchobo.car.api.data.* { *; }
--keep public class emforce.goodchobo.car.api.request.* { *; }
--keep public class emforce.goodchobo.car.api.response.* { *; }
--keep public class emforce.goodchobo.car.api.deserialization.* { *; }
--dontwarn emforce.goodchobo.car.api.data.**
--dontwarn emforce.goodchobo.car.api.request.**
--dontwarn emforce.goodchobo.car.api.response.**
--dontwarn emforce.goodchobo.car.api.deserialization.**
+#-keep public class bomi.kotlinside.api.data.* { *; }
+-keep public class bomi.kotlinside.api.req.* { *; }
+-keep public class bomi.kotlinside.api.res.* { *; }
+-keep public class bomi.kotlinside.api.deserialization.* { *; }
+#-dontwarn bomi.kotlinside.api.data.**
+-dontwarn bomi.kotlinside.api.request.**
+-dontwarn bomi.kotlinside.api.response.**
+-dontwarn bomi.kotlinside.api.deserialization.**
 
--keep public class emforce.goodchobo.car.ui.data.* { *; }
--dontwarn emforce.goodchobo.car.ui.data.**
+#-keep public class bomi.kotlinside.ui.data.* { *; }
+#-dontwarn emforce.goodchobo.car.ui.data.**
 
 -keep interface org.apache.http.*
 -keep class org.apache.http.* {public *;}
 
--keep public class emforce.goodchobo.car.util.CommonUtil { *; }
+-keep public class bomi.kotlinside.util.CommonUtil { *; }
 
 # Firebase Authentication
 -keepattributes *Annotation*
@@ -60,8 +60,3 @@
 -keepclassmembers public class * extends androidx.lifecycle.ViewModel { public <init>(...); }
 -keepclassmembers class com.lebao.app.domain.* { public <init>(...); }
 -keepclassmembers class * { public <init>(...); }
-
-#Adbrix
--keep class com.google.android.gms.ads.identifier.AdvertisingIdClient {*;}
--keep class com.google.android.gms.ads.identifier.AdvertisingIdClient$* {*;}
--dontwarn com.android.installreferrer

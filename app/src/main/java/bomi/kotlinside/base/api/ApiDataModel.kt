@@ -1,6 +1,6 @@
-package bomi.kotlinside.api
+package bomi.kotlinside.base.api
 
-import bomi.kotlinside.api.res.BaseResponse
+import bomi.kotlinside.base.api.BaseResponse
 import bomi.kotlinside.api.res.ResPopupVO
 import io.reactivex.Single
 

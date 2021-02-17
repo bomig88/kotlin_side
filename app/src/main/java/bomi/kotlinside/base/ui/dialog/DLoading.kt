@@ -1,4 +1,4 @@
-package bomi.kotlinside.ui.dialog
+package bomi.kotlinside.base.ui.dialog
 
 import android.app.Dialog
 import android.content.Context

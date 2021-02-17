@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import bomi.kotlinside.GlobalDefine
 import bomi.kotlinside.R
 import bomi.kotlinside.databinding.FragmentIntroBinding
-import bomi.kotlinside.ui.base.BaseFragment
+import bomi.kotlinside.base.ui.BaseFragment
 import bomi.kotlinside.ui.home.HomeFragment
 import bomi.kotlinside.ui.home.HomeTutorialFragment
 import bomi.kotlinside.util.SecureUtil
@@ -28,7 +28,6 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //앱 관련 정보 확인 후 상위 버전 있을 경우 업데이트 유도 진행
 
         viewModel.addObserver(viewLifecycleOwner, viewModel.popupVO, Observer {
             activityViewModel.initPopup(prefUtil = mgrPref,
@@ -40,9 +39,9 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
             //앱 최초 실행일 경우 튜토리얼 화면으로 이동
             //아닐 경우 핀번호 화면으로 이동
             if(mgrPref.flagFirstAppStart)
-                replaceFragment(HomeTutorialFragment(), false)
+                replaceFragment(HomeTutorialFragment(), addHistory = true)
             else
-                replaceFragment(HomeFragment(), false)
+                replaceFragment(HomeFragment(), addHistory = true)
         })
 
         if(checkPlayServices()) {
@@ -58,7 +57,6 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
                             .show()
                     } else {
                         viewModel.getPopupVO(getString(R.string.p_popup_service_type))
-
                     }
                 } catch (e: Exception) {
                     showAlertQuit()

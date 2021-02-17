@@ -1,5 +1,5 @@
 package bomi.kotlinside.ui.home
 
-import bomi.kotlinside.ui.base.BaseViewModel
+import bomi.kotlinside.base.ui.viewmodel.BaseViewModel
 
 open class HomeTutorialViewModel : BaseViewModel()

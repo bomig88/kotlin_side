@@ -4,9 +4,9 @@ import android.os.Bundle
 import bomi.kotlinside.GlobalDefine
 import bomi.kotlinside.R
 import bomi.kotlinside.databinding.ActivityMainBinding
-import bomi.kotlinside.ui.base.BaseActivity
-import bomi.kotlinside.ui.base.BaseDialogFragment
-import bomi.kotlinside.ui.base.BaseFragment
+import bomi.kotlinside.base.ui.BaseActivity
+import bomi.kotlinside.base.ui.BaseDialogFragment
+import bomi.kotlinside.base.ui.BaseFragment
 import bomi.kotlinside.ui.home.HomeFragment
 import bomi.kotlinside.ui.home.HomeTutorialFragment
 import bomi.kotlinside.ui.intro.IntroFragment

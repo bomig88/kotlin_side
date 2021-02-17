@@ -1,4 +1,4 @@
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui
 
 import android.app.Dialog
 import android.content.Context
@@ -15,7 +15,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
-import bomi.kotlinside.ui.dialog.DLoading
+import bomi.kotlinside.base.ui.dialog.DLoading
+import bomi.kotlinside.base.ui.viewmodel.BaseViewModel
 import bomi.kotlinside.util.PreferenceUtil
 import org.koin.android.ext.android.inject
 

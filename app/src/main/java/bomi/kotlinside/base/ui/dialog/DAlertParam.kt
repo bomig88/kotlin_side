@@ -1,4 +1,4 @@
-package bomi.kotlinside.ui.dialog
+package bomi.kotlinside.base.ui.dialog
 
 import android.app.AlertDialog
 import android.content.Context
@@ -53,7 +53,8 @@ class DAlertParam internal constructor() {
 
     @Suppress("unused")
     class Builder {
-        private val dAlertParam: DAlertParam = DAlertParam()
+        private val dAlertParam: DAlertParam =
+            DAlertParam()
 
         fun setMessage(@StringRes messageId: Int): Builder {
             dAlertParam.mMessage = MainApplication.instance.getText(messageId)

@@ -14,10 +14,11 @@
  *  limitations under the License.
  */
 
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui.viewmodel
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import bomi.kotlinside.base.ui.dialog.DAlertParam
 
 /**
  * A SingleLiveEvent used for Snackbar messages. Like a [SingleLiveEvent] but also prevents
@@ -26,9 +27,9 @@ import androidx.lifecycle.Observer
  *
  * Note that only one observer is going to be notified of changes.
  */
-class LoadingChange : SingleLiveEvent<Boolean>() {
+class DialogAlertMessage : SingleLiveEvent<DAlertParam>() {
 
-    fun observe(owner: LifecycleOwner, observer: (Boolean) -> Unit) {
+    fun observe(owner: LifecycleOwner, observer: (DAlertParam) -> Unit) {
         super.observe(owner, Observer {
             it?.run{
                 observer(it)
@@ -38,8 +39,9 @@ class LoadingChange : SingleLiveEvent<Boolean>() {
 
 }
 
-class LoadingClear:SingleLiveEvent<Any>(){
-    fun observe(owner: LifecycleOwner, observer: (Any) -> Unit) {
+class DialogAlertMessageString:
+    SingleLiveEvent<DAlertParam>(){
+    fun observe(owner: LifecycleOwner, observer: (DAlertParam) -> Unit) {
         super.observe(owner, Observer {
             it?.run{
                 observer(it)

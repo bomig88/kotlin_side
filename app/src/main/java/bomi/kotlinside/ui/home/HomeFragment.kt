@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import bomi.kotlinside.R
 import bomi.kotlinside.databinding.FragmentHomeBinding
-import bomi.kotlinside.ui.base.BaseFragment
+import bomi.kotlinside.base.ui.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -62,7 +62,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 //            }
 //        })
 
-        requestList()
+        if(activityViewModel.hasPopupList())
+            addFragment(PopupFragment())
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -77,15 +78,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 //            viewModel.currentPage = position
 //        }
 //    }
-
-    private fun requestList(){
-        if(viewModel.flagLoadingList) return
-
-//        viewDataBinding.pager.run {
-//            adapter = null
-//        }
-//        viewModel.getReportList(mgrPref.uuid)
-    }
 
     override fun refresh() { }
 }

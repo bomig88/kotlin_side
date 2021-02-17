@@ -1,4 +1,4 @@
-package bomi.kotlinside.exception;
+package bomi.kotlinside.base.exception;
 
 import java.io.IOException;
 

@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import bomi.kotlinside.R
 import bomi.kotlinside.api.res.ResPopupVO
 import bomi.kotlinside.databinding.FragmentPopupBinding
-import bomi.kotlinside.ui.base.BaseFragment
+import bomi.kotlinside.base.ui.BaseFragment
 import bomi.kotlinside.util.CommonUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

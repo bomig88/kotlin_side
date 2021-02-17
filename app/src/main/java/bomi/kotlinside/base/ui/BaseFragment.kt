@@ -1,4 +1,4 @@
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui
 
 import android.app.Activity
 import android.content.Context
@@ -19,8 +19,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import bomi.kotlinside.GlobalDefine
-import bomi.kotlinside.ui.dialog.DAlertParam
-import bomi.kotlinside.ui.dialog.DLoading
+import bomi.kotlinside.base.ui.dialog.DAlertParam
+import bomi.kotlinside.base.ui.dialog.DLoading
+import bomi.kotlinside.base.ui.viewmodel.ActivityViewModel
+import bomi.kotlinside.base.ui.viewmodel.BaseViewModel
 import bomi.kotlinside.util.PreferenceUtil
 import org.koin.android.ext.android.inject
 import bomi.kotlinside.ui.home.HomeFragment
@@ -68,7 +70,8 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
         val REQUEST_EMPTY = -99
     }
 
-    protected var nRequestCode = REQUEST_EMPTY
+    protected var nRequestCode =
+        REQUEST_EMPTY
 
     private var isFragmentAddType = false
     private var isFragmentAddHistory = true
@@ -130,7 +133,8 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
     }
 
     protected fun quitApp() {
-        getAvailableActivity(object:OnActivityEnabledListener{
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.finishAffinity() ?:quitApp()
             }
@@ -304,7 +308,7 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
         return nRequestCode
     }
 
-    fun setRequestCode(nRequestCode: Int): BaseFragment<*,*> {
+    fun setRequestCode(nRequestCode: Int): BaseFragment<*, *> {
         this.nRequestCode = nRequestCode
         return this
     }
@@ -336,50 +340,55 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
     fun isFragmentAddType(): Boolean  = isFragmentAddType
     fun isFragmentAddHistory() : Boolean = isFragmentAddHistory
 
-    fun setFragmentAddType(flag: Boolean): BaseFragment<*,*> {
+    fun setFragmentAddType(flag: Boolean): BaseFragment<*, *> {
         isFragmentAddType = flag
         return this
     }
 
-    fun setFragmentAddHistory(flag:Boolean): BaseFragment<*,*> {
+    fun setFragmentAddHistory(flag:Boolean): BaseFragment<*, *> {
         isFragmentAddHistory = flag
         return this
     }
 
-    fun addFragment(f:BaseFragment<*,*>, addHistory:Boolean=true) {
-        getAvailableActivity(object:OnActivityEnabledListener{
+    fun addFragment(f: BaseFragment<*, *>, addHistory:Boolean=true) {
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.add(f.setFragmentAddType(true).setFragmentAddHistory(addHistory)) ?: addFragment(f, addHistory)
             }
         })
     }
 
-    fun addFragment(f:BaseFragment<*,*>, requestCode:Int, addHistory:Boolean=true) {
-        getAvailableActivity(object:OnActivityEnabledListener{
+    fun addFragment(f: BaseFragment<*, *>, requestCode:Int, addHistory:Boolean=true) {
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.add(f.setFragmentAddType(true).setFragmentAddHistory(addHistory), requestCode) ?: addFragment(f, requestCode, addHistory)
             }
         })
     }
 
-    fun replaceFragment(f:BaseFragment<*,*>, addHistory:Boolean=true) {
-        getAvailableActivity(object:OnActivityEnabledListener{
+    fun replaceFragment(f: BaseFragment<*, *>, addHistory:Boolean=true) {
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.add(f.setFragmentAddHistory(addHistory)) ?: replaceFragment(f, addHistory)
             }
         })
     }
 
-    fun replaceFragment(f:BaseFragment<*,*>, requestCode:Int, addHistory:Boolean=true) {
-        getAvailableActivity(object:OnActivityEnabledListener{
+    fun replaceFragment(f: BaseFragment<*, *>, requestCode:Int, addHistory:Boolean=true) {
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.add(f.setFragmentAddHistory(addHistory), requestCode) ?: replaceFragment(f, requestCode, addHistory)
             }
         })
     }
 
-    fun addSingleton(f:BaseFragment<*,*>, clearAllHistory:Boolean = false) {
-        getAvailableActivity(object:OnActivityEnabledListener{
+    fun addSingleton(f: BaseFragment<*, *>, clearAllHistory:Boolean = false) {
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.addSingleton(f, clearAllHistory) ?: addSingleton(f, clearAllHistory)
             }
@@ -387,7 +396,8 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
     }
 
     fun back() {
-        getAvailableActivity(object:OnActivityEnabledListener{
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.popBackStack() ?: back()
             }
@@ -395,7 +405,8 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
     }
 
     fun popAllFragment() {
-        getAvailableActivity(object:OnActivityEnabledListener{
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.popAllFragment() ?: popAllFragment()
             }
@@ -420,7 +431,8 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
     abstract fun refresh()
 
     fun finishActivity() {
-        getAvailableActivity(object:OnActivityEnabledListener{
+        getAvailableActivity(object:
+            OnActivityEnabledListener {
             override fun onActivityEnabled(activity: BaseActivity<*, *>?) {
                 activity?.finish() ?: finishActivity()
             }

@@ -1,4 +1,4 @@
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import bomi.kotlinside.GlobalDefine
-import bomi.kotlinside.ui.dialog.DLoading
+import bomi.kotlinside.base.ui.dialog.DLoading
+import bomi.kotlinside.base.ui.viewmodel.BaseViewModel
 import bomi.kotlinside.util.PreferenceUtil
 import org.koin.android.ext.android.inject
 
@@ -42,7 +43,8 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        dialogLoading = DLoading(this@BaseActivity)
+        dialogLoading =
+            DLoading(this@BaseActivity)
 
         mFragmentHelper = FragmentHelper(this)
 
@@ -134,7 +136,7 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         return mFragmentHelper.getBackStackSize()
     }
 
-    open fun getLastStackFragment(): BaseFragment<*,*>? {
+    open fun getLastStackFragment(): BaseFragment<*, *>? {
         return mFragmentHelper.getLastStackFragment()
     }
 
@@ -145,7 +147,7 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
      *
      * @param f : 전환할 프레그먼트
      */
-    open fun addSingleton(f: BaseFragment<*,*>, clearAllHistory:Boolean = false) {
+    open fun addSingleton(f: BaseFragment<*, *>, clearAllHistory:Boolean = false) {
         mFragmentHelper.addSingleton(f, clearAllHistory)
     }
 
@@ -161,7 +163,7 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
      *
      * @param f 실을 프레그먼트
      */
-    open fun add(f: BaseFragment<*,*>) {
+    open fun add(f: BaseFragment<*, *>) {
         add(f, BaseFragment.REQUEST_EMPTY)
     }
 
@@ -173,7 +175,7 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
      * @param f         실을 프레그먼트
      * @param requestId requestCode 값
      */
-    open fun add(f: BaseFragment<*,*>, requestId: Int) {
+    open fun add(f: BaseFragment<*, *>, requestId: Int) {
         mFragmentHelper.add(f, requestId)
     }
 

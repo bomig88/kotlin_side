@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package bomi.kotlinside.ui.base
+package bomi.kotlinside.base.ui.viewmodel
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -38,7 +38,7 @@ class ToastMessage : SingleLiveEvent<Int>() {
 
 }
 
-class ToastMessageString:SingleLiveEvent<String>(){
+class ToastMessageString: SingleLiveEvent<String>(){
     fun observe(owner: LifecycleOwner, observer: (String) -> Unit) {
         super.observe(owner, Observer {
             it?.run{

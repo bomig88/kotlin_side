@@ -3,7 +3,7 @@ package bomi.kotlinside.ui.home
 import android.os.Bundle
 import android.view.View
 import bomi.kotlinside.databinding.FragmentHomeTutorialBinding
-import bomi.kotlinside.ui.base.BaseFragment
+import bomi.kotlinside.base.ui.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

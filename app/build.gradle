@@ -29,7 +29,7 @@ android {
     buildTypes {
         debug {
             debuggable = true
-            minifyEnabled true
+//            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt')
             proguardFile 'proguard-common.pro'
             proguardFile 'proguard-glide.pro'

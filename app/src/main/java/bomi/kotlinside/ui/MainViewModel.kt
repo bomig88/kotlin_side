@@ -1,6 +1,6 @@
 package bomi.kotlinside.ui
 
-import bomi.kotlinside.ui.base.BaseViewModel
+import bomi.kotlinside.base.ui.viewmodel.BaseViewModel
 
 
 class MainViewModel : BaseViewModel()

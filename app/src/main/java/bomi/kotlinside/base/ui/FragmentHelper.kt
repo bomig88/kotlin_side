@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import bomi.kotlinside.R
 import bomi.kotlinside.ui.home.HomeFragment
-import bomi.kotlinside.ui.home.HomeTutorialFragment
 import bomi.kotlinside.ui.home.PopupFragment
 import java.util.*
 
@@ -86,10 +85,7 @@ class FragmentHelper(private val mActivity: BaseActivity<*, *>) {
         if (mMapStack.size > 1) {
             val arrRemover: ArrayList<BaseFragment<*, *>> = ArrayList()
             for (f in mMapStack) {
-                val compareFragmentClass: Class<*> = if (mActivity.getFlagHaveSaveReport())
-                    HomeFragment::class.java
-                else
-                    HomeTutorialFragment::class.java
+                val compareFragmentClass: Class<*> = HomeFragment::class.java
                 if((f::class.java != compareFragmentClass))
                     arrRemover.add(f)
             }
@@ -136,7 +132,7 @@ class FragmentHelper(private val mActivity: BaseActivity<*, *>) {
             val requestCode: Int = popFragment.getRequestCode()
             val resultCode: Int = popFragment.getResultCode()
             val bundleData: Bundle? = popFragment.getBundleResult()
-            if ((popFragment is HomeTutorialFragment || popFragment is HomeFragment)) {
+            if ((popFragment is HomeFragment)) {
                 mMapStack.clear()
                 popFragment.finishActivity()
             } else {

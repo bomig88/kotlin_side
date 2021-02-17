@@ -10,7 +10,6 @@ import android.view.View
 import android.webkit.*
 import androidx.lifecycle.Observer
 import bomi.kotlinside.R
-import bomi.kotlinside.api.res.ResPopupVO
 import bomi.kotlinside.databinding.FragmentPopupBinding
 import bomi.kotlinside.base.ui.BaseFragment
 import bomi.kotlinside.util.CommonUtil
@@ -29,20 +28,7 @@ class PopupFragment : BaseFragment<FragmentPopupBinding, PopupViewModel>() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.addObserver(viewLifecycleOwner, viewModel.clickClose, Observer {
-            viewDataBinding.data?.let{ data->
-                if(data.todayHideActiveBool && viewDataBinding.cbNotSeeToday.isChecked) { //오늘 하루 보지 않기 체크
-                    activityViewModel.putNotSeeToday(data, prefUtil = mgrPref)
-                }
-                if(data.hideActiveBool && viewDataBinding.cbNotSeeAfter.isChecked) { //다시 보지 않기 체크
-                    activityViewModel.putNotSeeAfter(data, prefUtil = mgrPref)
-                }
-            }
-
-            activityViewModel.currentArrayPosition++
-
-            activityViewModel.getContent()?.let {
-                setContent(it)
-            } ?: clearPopupListAndBack()
+            clearPopupListAndBack()
         })
 
         //Touch 영역이 childe Fragment로 가지 않도록 막음
@@ -66,24 +52,19 @@ class PopupFragment : BaseFragment<FragmentPopupBinding, PopupViewModel>() {
 
         viewDataBinding.vm = viewModel
 
-        activityViewModel.getContent()?.let {
-            setContent(it)
-        } ?: back()
+        setContent()
     }
 
     private fun clearPopupListAndBack() {
-        activityViewModel.clearPopupList()
         back()
     }
 
-    private fun setContent(data: ResPopupVO.PopupVO) {
-        viewDataBinding.data = data
-
-        viewDataBinding.wvMain.loadData(
-            CommonUtil.getFitScreenHtml(data.content ?:""),
-            "text/html; charset=utf-8;",
-            "UTF-8"
-        )
+    private fun setContent() {
+//        viewDataBinding.wvMain.loadData(
+//            CommonUtil.getFitScreenHtml(data.content ?:""),
+//            "text/html; charset=utf-8;",
+//            "UTF-8"
+//        )
         viewDataBinding.cbNotSeeAfter.isChecked = false
         viewDataBinding.cbNotSeeToday.isChecked = false
     }

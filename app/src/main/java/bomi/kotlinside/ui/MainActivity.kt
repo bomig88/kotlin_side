@@ -8,7 +8,6 @@ import bomi.kotlinside.base.ui.BaseActivity
 import bomi.kotlinside.base.ui.BaseDialogFragment
 import bomi.kotlinside.base.ui.BaseFragment
 import bomi.kotlinside.ui.home.HomeFragment
-import bomi.kotlinside.ui.home.HomeTutorialFragment
 import bomi.kotlinside.ui.intro.IntroFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -49,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         when (val currentFragment = getLastStackFragment()) {
             is BaseFragment<*, *> -> {
                 when (currentFragment) {
-                    is HomeFragment, is HomeTutorialFragment -> {
+                    is HomeFragment -> {
                         if (currentFragment.onBackPressed())
                             checkAppFinish()
                     }

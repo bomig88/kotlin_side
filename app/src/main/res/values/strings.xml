@@ -10,12 +10,9 @@
     <string name="encrypt_transformation">AES/CBC/PKCS5PADDING</string>
     <string name="encrypt_algorithm">AES</string>
 
-    <!--<string name="api_server">https://dev-direct-api.goodchobo.com/</string>-->
-    <string name="api_server">https://beta-direct-api.goodchobo.com/</string>
-    <!--<string name="api_server">https://direct-api.goodchobo.com/</string>-->
+    <string name="api_server">https://www.google.co.kr/</string>
 
     <!-- Parameter -->
-    <string name="p_popup_service_type">goodchobo_car</string>
 
     <!-- Version -->
     <string name="default_version_string">0</string>

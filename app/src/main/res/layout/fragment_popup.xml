@@ -7,9 +7,7 @@
         <variable
             name="vm"
             type="bomi.kotlinside.ui.home.PopupViewModel" />
-        <variable
-            name="data"
-            type="bomi.kotlinside.api.res.ResPopupVO.PopupVO" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +33,6 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:text="@{data.title}"
                 android:id="@+id/tvTitle"
                 app:ftv_fontStyle="bold"
                 android:background="@color/colorAccent"
@@ -67,7 +64,6 @@
                 android:paddingEnd="0dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:visibility="@{data.todayHideActiveBool ? View.VISIBLE : View.GONE}"
                 app:layout_constraintTop_toBottomOf="@+id/wvMain"
                 app:layout_constraintBottom_toTopOf="@+id/cbNotSeeAfter"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -84,7 +80,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:layout_marginTop="15dp"
-                android:visibility="@{data.hideActiveBool ? View.VISIBLE : View.GONE}"
                 app:layout_constraintTop_toBottomOf="@+id/cbNotSeeToday"
                 app:layout_constraintBottom_toTopOf="@+id/btnClose"
                 app:layout_constraintLeft_toLeftOf="parent"

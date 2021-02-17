@@ -26,7 +26,6 @@ import bomi.kotlinside.base.ui.viewmodel.BaseViewModel
 import bomi.kotlinside.util.PreferenceUtil
 import org.koin.android.ext.android.inject
 import bomi.kotlinside.ui.home.HomeFragment
-import bomi.kotlinside.ui.home.HomeTutorialFragment
 
 @Suppress("unused")
 abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment() {
@@ -415,10 +414,7 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
 
     fun popToHome() {
         addSingleton(
-            if(mgrPref.flagHaveSaveReport)
-                HomeFragment()
-            else
-                HomeTutorialFragment()
+            HomeFragment()
             , clearAllHistory = true
         )
     }

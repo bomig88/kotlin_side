@@ -5,44 +5,39 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import bomi.kotlinside.R
 import bomi.kotlinside.base.api.ApiDataModel
-import bomi.kotlinside.api.res.ResPopupVO
 import bomi.kotlinside.base.ui.viewmodel.BaseViewModel
 
 class IntroViewModel(private val apiModule : ApiDataModel) : BaseViewModel() {
 
-    //팝업 정보 확인
-    private val _popupVO = MutableLiveData<ResPopupVO>()
-    val popupVO: LiveData<ResPopupVO> = _popupVO
-    fun getPopupVO(serviceType:String) {
+    private val _xml = MutableLiveData<String>()
+    val xml: LiveData<String> = _xml
+    fun getXml() {
         addDisposable(
-            apiModule.getPopupList(
-                serviceType
-            )
-            , callbacks = {
-                if(it.resCodeIsSuccess) {
-                    _popupVO.value = it.data
-
-                } else {
+            apiModule.getXml(),
+            callbacks = {
+                if(it.isSuccessful)
+                    _xml.value = it.body()?.string() ?:""
+                else
                     showAlert(
                         R.string.err_content_net_err_retry,
                         R.string.btn_retry,
                         R.string.btn_quit,
                         DialogInterface.OnClickListener { _, which ->
                             if(which == DialogInterface.BUTTON_POSITIVE) {
-                                getPopupVO(serviceType)
+                                getXml()
                             } else {
                                 _quitApp.call()
                             }
                         })
-                }
-            }
-            , throwable =  {
+            },
+            throwable = {
                 it.printStackTrace()
                 showNetworkErr(it, null, true) {
-                    getPopupVO(serviceType)
+                    getXml()
                 }
-            }
-            , showLoading = false
+            },
+            showLoading = false
         )
     }
+
 }

@@ -1,10 +1,9 @@
 package bomi.kotlinside.base.api
 
-import bomi.kotlinside.base.api.BaseResponse
-import bomi.kotlinside.api.res.ResPopupVO
 import io.reactivex.Single
+import okhttp3.ResponseBody
+import retrofit2.Response
 
 interface ApiDataModel {
-
-    fun getPopupList(serviceType:String) : Single<BaseResponse<ResPopupVO>>
+    fun getXml() : Single<Response<ResponseBody>>
 }

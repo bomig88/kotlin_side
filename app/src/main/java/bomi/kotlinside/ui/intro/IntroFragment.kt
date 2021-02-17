@@ -8,10 +8,10 @@ import android.view.View
 import androidx.lifecycle.Observer
 import bomi.kotlinside.GlobalDefine
 import bomi.kotlinside.R
-import bomi.kotlinside.databinding.FragmentIntroBinding
 import bomi.kotlinside.base.ui.BaseFragment
+import bomi.kotlinside.databinding.FragmentIntroBinding
 import bomi.kotlinside.ui.home.HomeFragment
-import bomi.kotlinside.ui.home.HomeTutorialFragment
+import bomi.kotlinside.util.Log
 import bomi.kotlinside.util.SecureUtil
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
@@ -29,18 +29,14 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.addObserver(viewLifecycleOwner, viewModel.popupVO, Observer {
-            activityViewModel.initPopup(prefUtil = mgrPref,
-                popupList = it.popupList ?: ArrayList()
-            )
+        viewModel.addObserver(viewLifecycleOwner, viewModel.xml, Observer {
+            Log.d("ApiCheck", "Response :: $it")
 
             mgrPref.flagHaveSaveReport = true
 
             //앱 최초 실행일 경우 튜토리얼 화면으로 이동
             //아닐 경우 핀번호 화면으로 이동
             if(mgrPref.flagFirstAppStart)
-                replaceFragment(HomeTutorialFragment(), addHistory = true)
-            else
                 replaceFragment(HomeFragment(), addHistory = true)
         })
 
@@ -56,9 +52,10 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
                             ) { _, _ -> finishActivity() }
                             .show()
                     } else {
-                        viewModel.getPopupVO(getString(R.string.p_popup_service_type))
+                        viewModel.getXml()
                     }
                 } catch (e: Exception) {
+                    Log.e("LogError", "error::" , e)
                     showAlertQuit()
                 }
             }, 2000)

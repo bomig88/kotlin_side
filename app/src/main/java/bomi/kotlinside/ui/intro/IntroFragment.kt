@@ -31,6 +31,7 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
 
         viewModel.addObserver(viewLifecycleOwner, viewModel.visitorJeju, Observer {
             Log.d("testLog", "visitorJeju :: ${it?.data?.size ?:"null"}")
+            activityViewModel.visitorJejuVO = it
 
             mgrPref.flagHaveSaveReport = true
 

@@ -10,9 +10,10 @@
     <string name="encrypt_transformation">AES/CBC/PKCS5PADDING</string>
     <string name="encrypt_algorithm">AES</string>
 
-    <string name="api_server">https://www.google.co.kr/</string>
+    <string name="api_server">https://open.jejudatahub.net/</string>
 
     <!-- Parameter -->
+    <string name="project_key">15tpep1rj49_er9_rrbp1j1oopr9oobc</string>
 
     <!-- Version -->
     <string name="default_version_string">0</string>

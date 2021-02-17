@@ -29,7 +29,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.jaxb.JaxbConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
@@ -105,13 +104,12 @@ var retrofitMainPart = module {
         Retrofit.Builder()
             .baseUrl(androidContext().getString(R.string.api_server))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//            .addConverterFactory(NullOnEmptyConverterFactory())
-            .addConverterFactory(JaxbConverterFactory.create())
-//            .addConverterFactory(GsonConverterFactory.create(
-//                GsonBuilder()
-//                    .serializeNulls()
-//                    .create())
-//            )
+            .addConverterFactory(NullOnEmptyConverterFactory())
+            .addConverterFactory(GsonConverterFactory.create(
+                GsonBuilder()
+                    .serializeNulls()
+                    .create())
+            )
             .client(provideOkHttpClient())
             .build()
             .create(ApiService::class.java)

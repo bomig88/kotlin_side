@@ -29,8 +29,8 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.addObserver(viewLifecycleOwner, viewModel.xml, Observer {
-            Log.d("ApiCheck", "Response :: $it")
+        viewModel.addObserver(viewLifecycleOwner, viewModel.visitorJeju, Observer {
+            Log.d("testLog", "visitorJeju :: ${it?.data?.size ?:"null"}")
 
             mgrPref.flagHaveSaveReport = true
 
@@ -52,7 +52,10 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
                             ) { _, _ -> finishActivity() }
                             .show()
                     } else {
-                        viewModel.getXml()
+                        viewModel.getVisitorJeju(getString(R.string.project_key),
+                            "201805",
+                            "201905",
+                            "")
                     }
                 } catch (e: Exception) {
                     Log.e("LogError", "error::" , e)

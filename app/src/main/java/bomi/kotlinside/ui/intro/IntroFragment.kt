@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import bomi.kotlinside.GlobalDefine
 import bomi.kotlinside.R
@@ -15,6 +16,8 @@ import bomi.kotlinside.util.Log
 import bomi.kotlinside.util.SecureUtil
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -34,6 +37,21 @@ class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
             activityViewModel.visitorJejuVO = it
 
             mgrPref.flagHaveSaveReport = true
+
+//            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+//                if (!task.isSuccessful) {
+//                    Log.w("TAG", "Fetching FCM registration token failed")
+//                    return@OnCompleteListener
+//                }
+//
+//                // Get new FCM registration token
+//                val token = task.result
+//
+//                // Log and toast
+//                val msg = "token :: $token"
+//                Log.d("TAG", msg)
+//                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show()
+//            })
 
             //앱 최초 실행일 경우 튜토리얼 화면으로 이동
             //아닐 경우 핀번호 화면으로 이동

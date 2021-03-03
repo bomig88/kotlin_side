@@ -88,4 +88,6 @@ dependencies {
     // Notification Compat
     implementation "com.android.support:support-compat:30.0.0"
 
+    //auth
+    implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
 }
